@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Todo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <h1 class="htitle">{{title}}</h1>
+
+        <div class="input-group">
+            <input v-model="newItem" @keyup.enter="addItem" 
+            placeholder="add your todo item" type="text" class="form-control">
+            <span class="input-group-btn">
+                <button @click="addItem" class="btn btn-default" type="button">Add!</button>
+            </span>
+        </div>
+
+        <ul class="list">
+            <li v-for="item in items" v-bind:class="{'removed':item.checked}">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" v-model="item.checked">
+                        {{item.text}}
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
